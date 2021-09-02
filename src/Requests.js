@@ -1,9 +1,13 @@
 const Request = {
   meal: async () => {
-    const { data } = await axios(
-      'https://www.themealdb.com/api/json/v1/1/random.php'
-    )
-    return data.meals
+    try {
+      const { data } = await axios(
+        'https://www.themealdb.com/api/json/v1/1/random.php'
+      )
+      return data.meals
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

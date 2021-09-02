@@ -3,14 +3,16 @@ import { View } from './src/View.js'
 
 const App = {
   init: async () => {
+    View.renderLoading()
     const meal = await Request.meal()
-    console.log(meal[0])
     View.render(meal[0])
+
+    document.querySelector('.random').addEventListener('click', () => {
+      App.init()
+    })
   }
 }
 
-document.querySelector('.random button').addEventListener('click', () => {
-  App.init()
-})
-
 App.init()
+
+export { App }
