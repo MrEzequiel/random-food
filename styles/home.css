@@ -1,0 +1,162 @@
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  padding: 2rem 8rem;
+
+  background: #f4f4f4;
+  box-shadow: 0px 0.6rem 3.4rem rgba(0, 0, 0, 0.16);
+}
+
+#header button {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  cursor: pointer;
+  background: transparent;
+  font-family: var(--font-title);
+  font-size: 2.4rem;
+  color: var(--color2);
+}
+
+#header button::after {
+  content: '';
+  position: absolute;
+  bottom: -0.3rem;
+  background: var(--color5);
+  width: 60%;
+  height: 0.1rem;
+
+  transition: width 300ms ease;
+}
+
+#header button:hover::after {
+  width: 95%;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  margin: 6rem 8rem;
+}
+
+main #info-meal {
+  flex: 1;
+}
+
+main #meal-details {
+  flex: 4 1 400px;
+}
+
+#info-meal .image-meal {
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+}
+
+.image-meal img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 2rem;
+  border: 5px solid var(--color2);
+}
+
+#info-meal .local-meal {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+
+.local-meal p {
+  font-family: var(--font-title);
+  font-weight: bold;
+}
+.local-meal p span {
+  font-family: var(--font-body);
+  font-weight: normal;
+}
+
+.ingredients-meal {
+  margin-top: 3rem;
+}
+
+.ingredients-meal h3 {
+  font-size: 2.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.ingredients-meal .list-ingredients li {
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  color: var(--color2);
+}
+
+.list-ingredients li span {
+  text-transform: none;
+  color: var(--font-color);
+}
+
+.ingredients-meal .list-ingredients li:last-child {
+  margin: 0;
+}
+
+.meal-title h1 {
+  font-size: 4.8rem;
+}
+
+.meal-title .instruction-meal {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  text-indent: 2rem;
+  line-height: 1.4;
+}
+
+#meal-details .video-meal {
+  margin: 6rem auto 0;
+
+  width: min(700px, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color1);
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+.video-meal iframe {
+  width: min(700px, 100%);
+  height: 400px;
+  border-radius: 2rem;
+}
+
+@media (max-width: 820px) {
+  main {
+    margin-top: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+
+@media (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
+  main #info-meal {
+    order: 2;
+  }
+}
+
+@media (max-width: 650px) {
+  #header {
+    flex-direction: column;
+    padding: 2rem 4rem;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,55 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:root {
+  -webkit-font-smoothing: antialiased;
+  font-size: 62.5%;
+  --font-title: 'Livvic', sans-serif;
+  --font-body: 'Work Sans', sans-serif;
+
+  --font-color: #1d1d29;
+  --color1: #6c1827;
+  --color2: #9e373b;
+  --color3: #ef5c54;
+  --color4: #ffe3d0;
+  --color5: #ffd312;
+}
+
+body {
+  font: 400 1.6rem var(--font-body);
+  color: var(--font-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  outline: none;
+  border: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
