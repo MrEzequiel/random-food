@@ -15,7 +15,10 @@ const View = {
     function createImageMeal() {
       const imageContainer = document.createElement('div')
       imageContainer.classList.add('image-meal')
-      imageContainer.innerHTML = `<img src="${meal.strMealThumb}" alt="image meal">`
+      imageContainer.innerHTML = `
+        <img src="${meal.strMealThumb}" alt="image meal" class="meal">
+        <img src="./assets/meal-icon.svg" class="icon-meal">
+      `
 
       sectionInfoMeal.append(imageContainer)
     }
@@ -68,7 +71,10 @@ const View = {
       const mealTitleContainer = document.createElement('div')
       mealTitleContainer.classList.add('meal-title')
 
-      mealTitleContainer.innerHTML = `<h1>${meal.strMeal}</h1>`
+      mealTitleContainer.innerHTML = `
+      <p class="id-meal">meal id: ${meal.idMeal}</p>
+      <h1>${meal.strMeal}</h1>
+      `
 
       const mealInstructionsContainer = document.createElement('div')
       mealInstructionsContainer.classList.add('instruction-meal')
@@ -122,7 +128,7 @@ const View = {
     createMealTitle()
     createLinkMeal()
 
-    if (meal.strYoutube !== null || meal.strYoutube !== '') {
+    if (meal.strYoutube || meal.strYoutube !== '') {
       createVideoMeal()
     }
 
@@ -130,7 +136,14 @@ const View = {
     mainContainer.append(sectionMealDetails)
 
     this.removerLoading()
-    this.body.append(mainContainer)
+
+    const script = document.querySelector('script')
+
+    //ADICIONAR O MAIN CONTAINER ANTES DO PRIMEIRO SCRIPT DA PÁGINA
+    this.body.insertBefore(mainContainer, script)
+
+    sectionInfoMeal.classList.add('animation-other')
+    sectionMealDetails.classList.add('animation')
   },
   renderLoading() {
     if (this.body.querySelector('main') !== null) {

@@ -1,3 +1,4 @@
+/* RESET DE MARGIN E PADDING */
 *,
 *:before,
 *:after {
@@ -10,6 +11,9 @@
 
 :root {
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+
+  /* VARIÁVEIS E DEFINIÇÕES */
   font-size: 62.5%;
   --font-title: 'Livvic', sans-serif;
   --font-body: 'Work Sans', sans-serif;
@@ -24,18 +28,21 @@
 
 body {
   font: 400 1.6rem var(--font-body);
+  background: #f4f4f4;
   color: var(--font-color);
 }
 
+/* ESTILO DE SCROLL */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 11px;
   height: 0;
   scrollbar-width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--font-color);
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid #f4f4f4;
 }
 
 ::-webkit-scrollbar,
@@ -43,6 +50,7 @@ body {
   background: #f4f4f4;
 }
 
+/* RESET EM ESTILOS PRE DEFINIDOS */
 a {
   text-decoration: none;
   color: var(--font-color);
@@ -59,13 +67,14 @@ input {
   border: none;
 }
 
+ul {
+  list-style: none;
+}
+
+/* ESTILOS GLOBAIS */
 h1,
 h2,
 h3 {
   font-family: var(--font-title);
   font-weight: bold;
-}
-
-ul {
-  list-style: none;
 }
