@@ -1,49 +1,5 @@
-#header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 2rem;
-
-  padding: 2rem 8rem;
-
-  background: #fff;
-  box-shadow: 0px 0.6rem 3.4rem rgba(0, 0, 0, 0.16);
-
-  transition: box-shadow 600ms;
-}
-
-#header:hover {
-  box-shadow: 0px 0.6rem 4.4rem rgba(0, 0, 0, 0.3);
-}
-
-#header button {
-  position: relative;
-
-  display: flex;
-  justify-content: center;
-
-  cursor: pointer;
-  background: transparent;
-  font-family: var(--font-title);
-  font-size: 2.4rem;
-  color: var(--color2);
-}
-
-#header button::after {
-  content: '';
-  position: absolute;
-  bottom: -0.3rem;
-  background: var(--color5);
-  width: 60%;
-  height: 0.1rem;
-
-  transition: width 300ms ease;
-}
-
-#header button:hover::after {
-  width: 95%;
-}
+@import './header.css';
+@import './search.css';
 
 @keyframes floating {
   0% {
@@ -70,6 +26,7 @@
 }
 
 .loading {
+  cursor: wait;
   margin: 6rem auto 0;
   animation: floating 2s infinite ease;
 }
@@ -103,9 +60,11 @@ main #meal-details {
 @keyframes float {
   to {
     transform: translateY(-10px);
+    filter: drop-shadow(0 14px 10px #1212129a);
   }
   from {
     transform: translateY(10px);
+    filter: drop-shadow(0 4px 10px #1212129a);
   }
 }
 
@@ -114,7 +73,7 @@ main #meal-details {
   top: -30px;
   left: -30px;
   position: absolute;
-  animation: float 2s infinite alternate ease-in-out;
+  animation: float 3s infinite alternate ease-in-out;
 }
 
 .image-meal .meal {
@@ -182,7 +141,6 @@ main #meal-details {
 .meal-title .instruction-meal {
   margin-top: 2rem;
   font-size: 1.6rem;
-  text-indent: 2rem;
   line-height: 1.4;
 }
 
@@ -238,18 +196,10 @@ main #meal-details {
   }
 }
 
-@media (max-width: 650px) {
-  #header {
-    flex-direction: column;
-    padding: 2rem 4rem;
-    justify-content: center;
-  }
-}
-
 @keyframes slide-right {
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0, 0);
   }
   from {
     opacity: 0.2;
