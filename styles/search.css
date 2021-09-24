@@ -2,6 +2,49 @@
   flex-direction: column;
 }
 
+#main-search .title-error {
+  text-align: center;
+  font-size: 6rem;
+}
+
+.error-404 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes opa {
+  25% {
+    transform: translate3d(0, -30px, 0);
+    right: 29%;
+  }
+  50% {
+    right: 32%;
+  }
+  75% {
+    right: 35%;
+  }
+  100% {
+    right: 32%;
+    transform: translate3d(0, 20px, 0);
+  }
+}
+
+.error-404 img:last-child {
+  position: absolute;
+  bottom: -10px;
+  right: 40%;
+
+  animation: float 3s infinite alternate ease-in-out;
+}
+
+.error-404 img.search-icon {
+  right: 32%;
+  bottom: -100px;
+  animation: opa 6.5s infinite alternate ease-in-out;
+}
+
 #main-search .search-text {
   font-size: 4.8rem;
 }

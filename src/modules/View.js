@@ -1,4 +1,4 @@
-import { App } from '../main.js'
+import { Search } from './Search.js'
 
 const View = {
   body: document.querySelector('body'),
@@ -173,7 +173,7 @@ const View = {
       mealContainer.setAttribute('data-meal', meal.idMeal)
 
       mealContainer.addEventListener('click', () => {
-        App.handleClickMeal(mealContainer.dataset.meal)
+        Search.handleClickMeal(mealContainer.dataset.meal)
       })
 
       mealContainer.innerHTML = `
@@ -241,10 +241,22 @@ const View = {
 
     const renders = {
       'Error-404'() {
-        mainContainer.innerHTML = 'Error 404'
+        mainContainer.innerHTML += `
+        <h2 class="title-error">Error 404</h2>
+        <div class="error-404">
+          <img src="./assets/meal-icon.svg" />
+          <img src="./assets/not-found-icon.svg" />
+        </div>
+        `
       },
       'Not-found'() {
-        mainContainer.innerHTML += `<h3>Meal not found</h3>`
+        mainContainer.innerHTML += `
+        <h3 class="title-error">Meal not found</h3>
+        <div class="error-404">
+          <img src="./assets/meal-icon.svg" />
+          <img src="./assets/search-icon.svg" class="search-icon"/>
+        </div>        
+        `
       }
     }
 

@@ -29,7 +29,12 @@
       </div>
 
       <form class="search-meal">
-        <input type="text" id="search" placeholder="Search for meal:" />
+        <input
+          type="text"
+          id="search"
+          placeholder="Search for meal:"
+          autocomplete="off"
+        />
         <button type="submit" class="button-search">
           <span class="material-icons"> search </span>
         </button>
@@ -45,10 +50,6 @@
     </main>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-    <script type="module">
-      import { App } from './main.js'
-      App.searchInit()
-    </script>
+    <script type="module" src="./src/script.js"></script>
   </body>
 </html>

@@ -63,6 +63,7 @@ img {
 
 button,
 input {
+  color: var(--font-color);
   outline: none;
   border: none;
 }
