@@ -15,7 +15,7 @@
 
 ## ✨ Preview
 
-<img src="https://s9.gifyu.com/images/salve.gif">
+<img src="./assets/gif-page.gif">
 🔗<a href="https://mrezequiel.github.io/random-food/" >Random Food Deploy</a>
 <hr>
 
