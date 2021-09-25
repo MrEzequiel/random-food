@@ -1,33 +1,37 @@
-import Request from './Requests.js'
-import { View } from './View.js'
-import { Search } from './Search.js'
+import Utilities from './UtilitiesAndHandles'
+import Request from './Requests'
+import View from './View'
 
-export const App = {
-  getFormSearch: () => document.querySelector('.search-meal'),
-  getRandomButton: () => document.querySelector('.random'),
-
+const App = {
   async init() {
     View.renderLoading()
 
     const idMeal = window.location.search.split('=')[1]
     let meal = null
 
-    idMeal
-      ? (meal = await Request.getMealById(idMeal))
-      : (meal = await Request.meal())
+    if (idMeal) {
+      meal = await Request.getMealById(idMeal)
+    } else {
+      meal = await Request.meal()
+    }
 
     View.render(meal[0])
 
-    App.getRandomButton().addEventListener('click', App.handleClickRandom)
-    App.getFormSearch().addEventListener('submit', Search.handleClick)
-  },
+    Utilities.getRandomButton().addEventListener('click', () => {
+      if (Utilities.handleClickRandom) {
+        window.history.pushState(null, null, 'random.html')
+        App.init()
+      }
+    })
 
-  handleClickRandom() {
-    if (window.location.href.includes('random.html')) {
-      window.history.pushState(null, null, 'random.html')
-      App.init()
-    } else {
-      window.location.href = 'random.html'
-    }
+    Utilities.getFormSearch().addEventListener('submit', e => {
+      e.preventDefault()
+      const mealName = Utilities.handleClick(e)
+      if (mealName) {
+        window.location.href = `search.html?search=${mealName}`
+      }
+    })
   }
 }
+
+export default App

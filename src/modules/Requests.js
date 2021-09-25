@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const Request = {
   async meal() {
     try {
@@ -7,6 +9,7 @@ const Request = {
       return data.meals
     } catch (e) {
       console.log(e)
+      return null
     }
   },
 
@@ -18,6 +21,7 @@ const Request = {
       return data.meals
     } catch (e) {
       console.log(e)
+      return null
     }
   },
 
@@ -29,6 +33,7 @@ const Request = {
       return data.meals
     } catch (e) {
       console.log(e)
+      return null
     }
   }
 }

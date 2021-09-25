@@ -1,8 +1,8 @@
-import { View } from './View.js'
-import Request from './Requests.js'
-import { App } from './App.js'
+import Request from './Requests'
+import View from './View'
+import Utilities from './UtilitiesAndHandles'
 
-export const Search = {
+const Search = {
   async init() {
     const searchText = document.querySelector('.search-text')
     while (searchText.nextElementSibling) {
@@ -13,7 +13,7 @@ export const Search = {
     const mealName = decodeURI(searchMeal)
 
     if (!mealName.trim() || mealName === 'undefined') {
-      View.renderError('Error-404')
+      View.renderError('Error404')
     } else {
       document.querySelector('.search-text span').innerText = `"${mealName}"`
       View.renderLoadingSearch()
@@ -22,34 +22,43 @@ export const Search = {
 
       View.removeLoading()
 
-      !resultListMeals
-        ? View.renderError('Not-found')
-        : View.renderList(resultListMeals)
+      if (!resultListMeals) {
+        View.renderError('NotFound')
+      } else {
+        View.renderList(resultListMeals)
+
+        const mealContainers = document.querySelectorAll('.meal-list-container')
+        mealContainers.forEach(mealContainer => {
+          mealContainer.addEventListener('click', () => {
+            Search.handleClickMeal(mealContainer.dataset.meal)
+          })
+        })
+      }
     }
 
-    App.getFormSearch().addEventListener('submit', Search.handleClick)
-    App.getRandomButton().addEventListener('click', App.handleClickRandom)
+    Utilities.getFormSearch().addEventListener('submit', e => {
+      e.preventDefault()
+      const mealNameSearch = Utilities.handleClick(e)
+      if (mealNameSearch) {
+        window.history.pushState(
+          null,
+          null,
+          `search.html?search=${mealNameSearch}`
+        )
+        Search.init()
+      }
+    })
+
+    Utilities.getRandomButton().addEventListener('click', () => {
+      if (Utilities.handleClickRandom) {
+        window.location.href = 'random.html'
+      }
+    })
   },
 
   handleClickMeal(idMeal) {
     window.location.href = `random.html?id=${idMeal}`
-  },
-
-  handleClick(e) {
-    e.preventDefault()
-    let mealName = e.target[0].value.trim()
-
-    if (!mealName) {
-      return 0
-    }
-
-    const urlMealName = encodeURI(mealName)
-
-    if (window.location.href.includes('random.html')) {
-      window.location.href = `search.html?search=${urlMealName}`
-    } else {
-      window.history.pushState(null, null, `search.html?search=${urlMealName}`)
-      Search.init()
-    }
   }
 }
+
+export default Search

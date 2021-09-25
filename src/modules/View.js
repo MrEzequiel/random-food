@@ -1,5 +1,3 @@
-import { Search } from './Search.js'
-
 const View = {
   body: document.querySelector('body'),
   render(meal) {
@@ -13,6 +11,8 @@ const View = {
 
     const listIngredient = document.createElement('ul')
     listIngredient.classList.add('list-ingredients')
+
+    const mealArray = Object.entries(meal)
 
     function createImageMeal() {
       const imageContainer = document.createElement('div')
@@ -55,14 +55,15 @@ const View = {
         )
         .map(measure => measure[1])
 
-      const recipeList = listIngredients.reduce(
-        (acc, item, index) =>
-          listMeasure[index]
-            ? (acc += `<li>${item}: <span>${listMeasure[index]}</span></li>`)
-            : (acc += `<li>${item}</li>`),
-
-        ''
-      )
+      //  ATENÇÃO MARRECO
+      const recipeList = listIngredients.reduce((acc, item, index) => {
+        if (listMeasure[index]) {
+          acc += `<li>${item}: <span>${listMeasure[index]}</span></li>`
+        } else {
+          acc += `<li>${item}</li>`
+        }
+        return acc
+      }, '')
 
       return recipeList
     }
@@ -90,8 +91,10 @@ const View = {
       const mealInstructionsContainer = document.createElement('div')
       mealInstructionsContainer.classList.add('instruction-meal')
 
+      const regExp = /\n/g
+      // ATENÇÃO MARRECO
       const mealInstructions = meal.strInstructions.replace(
-        RegExp('\n', 'g'),
+        RegExp(regExp),
         '<br>'
       )
 
@@ -135,13 +138,11 @@ const View = {
     createImageMeal()
     createLocalMeal()
 
-    const mealArray = Object.entries(meal)
-
     const listIngredientLItens = createListIngredient()
 
     createIngredient(listIngredientLItens)
 
-    //CREATE MEAL TITLES
+    //  CREATE MEAL TITLES
     createMealTitle()
     createLinkMeal()
 
@@ -156,7 +157,7 @@ const View = {
 
     const script = document.querySelector('script')
 
-    //ADICIONAR O MAIN CONTAINER ANTES DO PRIMEIRO SCRIPT DA PÁGINA
+    //  ADICIONAR O MAIN CONTAINER ANTES DO PRIMEIRO SCRIPT DA PÁGINA
     this.body.insertBefore(mainContainer, script)
 
     sectionInfoMeal.classList.add('animation-other')
@@ -171,10 +172,6 @@ const View = {
       const mealContainer = document.createElement('div')
       mealContainer.classList.add('meal-list-container')
       mealContainer.setAttribute('data-meal', meal.idMeal)
-
-      mealContainer.addEventListener('click', () => {
-        Search.handleClickMeal(mealContainer.dataset.meal)
-      })
 
       mealContainer.innerHTML = `
       <div class="info-meal">
@@ -193,7 +190,11 @@ const View = {
 
       let ingredientString = objMeal.reduce((acc, item) => {
         if (item[0].includes('strIngredient') && item[1] && item[1].trim()) {
-          acc ? (acc += `, ${item[1]}`) : (acc += `${item[1]}`)
+          if (acc) {
+            acc += `, ${item[1]}`
+          } else {
+            acc += `${item[1]}`
+          }
         }
         return acc.trim()
       }, '')
@@ -240,7 +241,7 @@ const View = {
     const mainContainer = document.querySelector('main')
 
     const renders = {
-      'Error-404'() {
+      Error404() {
         mainContainer.innerHTML += `
         <h2 class="title-error">Error 404</h2>
         <div class="error-404">
@@ -249,7 +250,7 @@ const View = {
         </div>
         `
       },
-      'Not-found'() {
+      NotFound() {
         mainContainer.innerHTML += `
         <h3 class="title-error">Meal not found</h3>
         <div class="error-404">
@@ -264,4 +265,4 @@ const View = {
   }
 }
 
-export { View }
+export default View
