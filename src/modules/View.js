@@ -1,126 +1,126 @@
 const View = {
-  body: document.querySelector('body'),
+  body: document.querySelector("body"),
   render(meal) {
-    const mainContainer = document.createElement('main')
+    const mainContainer = document.createElement("main");
 
-    const sectionInfoMeal = document.createElement('section')
-    sectionInfoMeal.setAttribute('id', 'info-meal')
+    const sectionInfoMeal = document.createElement("section");
+    sectionInfoMeal.setAttribute("id", "info-meal");
 
-    const sectionMealDetails = document.createElement('section')
-    sectionMealDetails.setAttribute('id', 'meal-details')
+    const sectionMealDetails = document.createElement("section");
+    sectionMealDetails.setAttribute("id", "meal-details");
 
-    const listIngredient = document.createElement('ul')
-    listIngredient.classList.add('list-ingredients')
+    const listIngredient = document.createElement("ul");
+    listIngredient.classList.add("list-ingredients");
 
-    const mealArray = Object.entries(meal)
+    const mealArray = Object.entries(meal);
 
     function createImageMeal() {
-      const imageContainer = document.createElement('div')
-      imageContainer.classList.add('image-meal')
+      const imageContainer = document.createElement("div");
+      imageContainer.classList.add("image-meal");
       imageContainer.innerHTML = `
         <img src="${meal.strMealThumb}" alt="image meal" class="meal">
         <img src="./assets/meal-icon.svg" class="icon-meal">
-      `
+      `;
 
-      sectionInfoMeal.append(imageContainer)
+      sectionInfoMeal.append(imageContainer);
     }
 
     function createLocalMeal() {
-      const localInfoContainer = document.createElement('div')
-      localInfoContainer.classList.add('local-meal')
+      const localInfoContainer = document.createElement("div");
+      localInfoContainer.classList.add("local-meal");
       localInfoContainer.innerHTML = `
       <p>Category: <span>${meal.strCategory}</span></p>
       <p>Area: <span>${meal.strArea}</span></p>
-      `
+      `;
 
-      sectionInfoMeal.append(localInfoContainer)
+      sectionInfoMeal.append(localInfoContainer);
     }
 
     const createListIngredient = () => {
       const listIngredients = mealArray
         .filter(
-          ingredient =>
-            ingredient[0].includes('strIngredient') &&
+          (ingredient) =>
+            ingredient[0].includes("strIngredient") &&
             ingredient[1] !== null &&
-            ingredient[1].trim() !== ''
+            ingredient[1].trim() !== ""
         )
-        .map(ingredient => ingredient[1])
+        .map((ingredient) => ingredient[1]);
 
       const listMeasure = mealArray
         .filter(
-          measure =>
-            measure[0].includes('strMeasure') &&
+          (measure) =>
+            measure[0].includes("strMeasure") &&
             measure[1] !== null &&
-            measure[1].trim() !== ''
+            measure[1].trim() !== ""
         )
-        .map(measure => measure[1])
+        .map((measure) => measure[1]);
 
       //  ATENÇÃO MARRECO
       const recipeList = listIngredients.reduce((acc, item, index) => {
         if (listMeasure[index]) {
-          acc += `<li>${item}: <span>${listMeasure[index]}</span></li>`
+          acc += `<li>${item}: <span>${listMeasure[index]}</span></li>`;
         } else {
-          acc += `<li>${item}</li>`
+          acc += `<li>${item}</li>`;
         }
-        return acc
-      }, '')
+        return acc;
+      }, "");
 
-      return recipeList
-    }
+      return recipeList;
+    };
 
     function createIngredient(list) {
-      const ingredientContainer = document.createElement('div')
-      ingredientContainer.classList.add('ingredients-meal')
+      const ingredientContainer = document.createElement("div");
+      ingredientContainer.classList.add("ingredients-meal");
 
-      ingredientContainer.innerHTML = `<h3>Ingredients:</h3>`
-      listIngredient.innerHTML = list
-      ingredientContainer.append(listIngredient)
+      ingredientContainer.innerHTML = `<h3>Ingredients:</h3>`;
+      listIngredient.innerHTML = list;
+      ingredientContainer.append(listIngredient);
 
-      sectionInfoMeal.append(ingredientContainer)
+      sectionInfoMeal.append(ingredientContainer);
     }
 
     function createMealTitle() {
-      const mealTitleContainer = document.createElement('div')
-      mealTitleContainer.classList.add('meal-title')
+      const mealTitleContainer = document.createElement("div");
+      mealTitleContainer.classList.add("meal-title");
 
       mealTitleContainer.innerHTML = `
       <p class="id-meal">meal id: ${meal.idMeal}</p>
       <h1>${meal.strMeal}</h1>
-      `
+      `;
 
-      const mealInstructionsContainer = document.createElement('div')
-      mealInstructionsContainer.classList.add('instruction-meal')
+      const mealInstructionsContainer = document.createElement("div");
+      mealInstructionsContainer.classList.add("instruction-meal");
 
-      const regExp = /\n/g
+      const regExp = /\n/g;
       // ATENÇÃO MARRECO
       const mealInstructions = meal.strInstructions.replace(
         RegExp(regExp),
-        '<br>'
-      )
+        "<br>"
+      );
 
-      mealInstructionsContainer.innerHTML = `<p>${mealInstructions}</p>`
-      mealTitleContainer.append(mealInstructionsContainer)
+      mealInstructionsContainer.innerHTML = `<p>${mealInstructions}</p>`;
+      mealTitleContainer.append(mealInstructionsContainer);
 
-      sectionMealDetails.append(mealTitleContainer)
+      sectionMealDetails.append(mealTitleContainer);
     }
 
     function createLinkMeal() {
-      const mealLinkContainer = document.createElement('div')
-      mealLinkContainer.classList.add('meal-link')
+      const mealLinkContainer = document.createElement("div");
+      mealLinkContainer.classList.add("meal-link");
 
       mealLinkContainer.innerHTML = `
       <span class="material-icons">attach_file</span>
       <a href="${meal.strSource}" target="_blank">${meal.strMeal}</a>
-      `
+      `;
 
-      sectionMealDetails.append(mealLinkContainer)
+      sectionMealDetails.append(mealLinkContainer);
     }
 
     function createVideoMeal() {
-      const linkYoutube = meal.strYoutube.slice(32)
+      const linkYoutube = meal.strYoutube.slice(32);
 
-      const videoMeal = document.createElement('div')
-      videoMeal.classList.add('video-meal')
+      const videoMeal = document.createElement("div");
+      videoMeal.classList.add("video-meal");
       videoMeal.innerHTML = `
       <iframe
             src="https://www.youtube.com/embed/${linkYoutube}"
@@ -129,49 +129,47 @@ const View = {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
       ></iframe>
-      `
+      `;
 
-      sectionMealDetails.append(videoMeal)
+      sectionMealDetails.append(videoMeal);
     }
 
     // CREATE INFO MEAL
-    createImageMeal()
-    createLocalMeal()
+    createImageMeal();
+    createLocalMeal();
 
-    const listIngredientLItens = createListIngredient()
+    const listIngredientLItens = createListIngredient();
 
-    createIngredient(listIngredientLItens)
+    createIngredient(listIngredientLItens);
 
     //  CREATE MEAL TITLES
-    createMealTitle()
-    createLinkMeal()
+    createMealTitle();
+    createLinkMeal();
 
-    if (meal.strYoutube || meal.strYoutube !== '') {
-      createVideoMeal()
+    if (meal.strYoutube || meal.strYoutube !== "") {
+      createVideoMeal();
     }
 
-    mainContainer.append(sectionInfoMeal)
-    mainContainer.append(sectionMealDetails)
+    mainContainer.append(sectionInfoMeal);
+    mainContainer.append(sectionMealDetails);
 
-    this.removeLoading()
+    this.removeLoading();
 
-    const script = document.querySelector('script')
+    const header = document.querySelector("header");
+    header.insertAdjacentElement("afterEnd", mainContainer);
 
-    //  ADICIONAR O MAIN CONTAINER ANTES DO PRIMEIRO SCRIPT DA PÁGINA
-    this.body.insertBefore(mainContainer, script)
-
-    sectionInfoMeal.classList.add('animation-other')
-    sectionMealDetails.classList.add('animation')
+    sectionInfoMeal.classList.add("animation-other");
+    sectionMealDetails.classList.add("animation");
   },
 
   renderList(meals) {
-    const containerElement = document.createElement('section')
-    containerElement.classList.add('meal-list')
+    const containerElement = document.createElement("section");
+    containerElement.classList.add("meal-list");
 
-    const createMealList = meal => {
-      const mealContainer = document.createElement('div')
-      mealContainer.classList.add('meal-list-container')
-      mealContainer.setAttribute('data-meal', meal.idMeal)
+    const createMealList = (meal) => {
+      const mealContainer = document.createElement("div");
+      mealContainer.classList.add("meal-list-container");
+      mealContainer.setAttribute("data-meal", meal.idMeal);
 
       mealContainer.innerHTML = `
       <div class="info-meal">
@@ -184,25 +182,25 @@ const View = {
           <img src="${meal.strMealThumb}" alt="${meal.strMeal} image"/>
         </div>
       </div>
-      `
+      `;
 
-      const objMeal = Object.entries(meal)
+      const objMeal = Object.entries(meal);
 
       let ingredientString = objMeal.reduce((acc, item) => {
-        if (item[0].includes('strIngredient') && item[1] && item[1].trim()) {
+        if (item[0].includes("strIngredient") && item[1] && item[1].trim()) {
           if (acc) {
-            acc += `, ${item[1]}`
+            acc += `, ${item[1]}`;
           } else {
-            acc += `${item[1]}`
+            acc += `${item[1]}`;
           }
         }
-        return acc.trim()
-      }, '')
+        return acc.trim();
+      }, "");
 
       ingredientString = ingredientString.padEnd(
         ingredientString.length + 3,
-        '...'
-      )
+        "..."
+      );
 
       mealContainer.innerHTML += `
       <div class="more-info">
@@ -210,35 +208,35 @@ const View = {
         <p><strong>Area:</strong> ${meal.strArea}</p>
         <p><strong>Ingredients:</strong> ${ingredientString}</p>
       </div>
-      `
+      `;
 
-      containerElement.append(mealContainer)
-    }
+      containerElement.append(mealContainer);
+    };
 
-    meals.forEach(meal => createMealList(meal))
-    document.querySelector('main').append(containerElement)
+    meals.forEach((meal) => createMealList(meal));
+    document.querySelector("main").append(containerElement);
   },
 
   renderLoading() {
-    if (this.body.querySelector('main') !== null) {
-      this.body.removeChild(this.body.querySelector('main'))
+    if (this.body.querySelector("main") !== null) {
+      this.body.removeChild(this.body.querySelector("main"));
     }
 
-    this.body.innerHTML += `<img src="./assets/meal-loading.svg" class="loading">`
+    this.body.innerHTML += `<img src="./assets/meal-loading.svg" class="loading">`;
   },
 
   renderLoadingSearch() {
-    this.body.innerHTML += `<img src="./assets/meal-loading.svg" class="loading">`
+    this.body.innerHTML += `<img src="./assets/meal-loading.svg" class="loading">`;
   },
 
   removeLoading() {
-    const loading = document.querySelector('.loading')
+    const loading = document.querySelector(".loading");
 
-    document.body.removeChild(loading)
+    document.body.removeChild(loading);
   },
 
   renderError(type) {
-    const mainContainer = document.querySelector('main')
+    const mainContainer = document.querySelector("main");
 
     const renders = {
       Error404() {
@@ -248,7 +246,7 @@ const View = {
           <img src="./assets/meal-icon.svg" />
           <img src="./assets/not-found-icon.svg" />
         </div>
-        `
+        `;
       },
       NotFound() {
         mainContainer.innerHTML += `
@@ -256,13 +254,13 @@ const View = {
         <div class="error-404">
           <img src="./assets/meal-icon.svg" />
           <img src="./assets/search-icon.svg" class="search-icon"/>
-        </div>        
-        `
-      }
-    }
+        </div>
+        `;
+      },
+    };
 
-    renders[type]()
-  }
-}
+    renders[type]();
+  },
+};
 
-export default View
+export default View;
