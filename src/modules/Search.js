@@ -28,7 +28,7 @@ const Search = {
         View.renderList(resultListMeals)
 
         const mealContainers = document.querySelectorAll('.meal-list-container')
-        mealContainers.forEach(mealContainer => {
+        mealContainers.forEach((mealContainer) => {
           mealContainer.addEventListener('click', () => {
             Search.handleClickMeal(mealContainer.dataset.meal)
           })
@@ -36,7 +36,7 @@ const Search = {
       }
     }
 
-    Utilities.getFormSearch().addEventListener('submit', e => {
+    Utilities.getFormSearch().addEventListener('submit', (e) => {
       e.preventDefault()
       const mealNameSearch = Utilities.handleClick(e)
       if (mealNameSearch) {
@@ -58,7 +58,7 @@ const Search = {
 
   handleClickMeal(idMeal) {
     window.location.href = `random.html?id=${idMeal}`
-  }
+  },
 }
 
 export default Search

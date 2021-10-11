@@ -1,19 +1,28 @@
 body {
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) 2fr;
+  grid-template-columns: 350px 1fr;
   align-items: center;
 }
 
 .image {
   height: 100vh;
+  overflow: hidden;
+  border-right: 0.5rem solid var(--color5);
 }
 
-.image img {
-  position: relative;
+.image .container {
+  width: 350px;
+  height: 100%;
+  display: flex;
+
+  transition: transform 500ms ease-in-out;
+}
+
+.container img {
+  flex-shrink: 0;
   object-fit: cover;
   height: 100%;
-  width: 100%;
-  border-right: 0.5rem solid var(--color5);
+  width: 350px;
 }
 
 main {

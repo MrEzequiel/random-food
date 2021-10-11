@@ -35,7 +35,7 @@ const Request = {
       console.log(e)
       return null
     }
-  }
+  },
 }
 
 export default Request

@@ -15,7 +15,7 @@ const Utilities = {
       return true
     }
     return false
-  }
+  },
 }
 
 export default Utilities

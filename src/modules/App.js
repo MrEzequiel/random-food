@@ -24,14 +24,14 @@ const App = {
       }
     })
 
-    Utilities.getFormSearch().addEventListener('submit', e => {
+    Utilities.getFormSearch().addEventListener('submit', (e) => {
       e.preventDefault()
       const mealName = Utilities.handleClick(e)
       if (mealName) {
         window.location.href = `search.html?search=${mealName}`
       }
     })
-  }
+  },
 }
 
 export default App
