@@ -1,5 +1,5 @@
 export default class Slide {
-  constructor(container, time, width) {
+  constructor(container, time = 5000, width) {
     this.container = document.querySelector(container)
     this.time = time
     this.width = width

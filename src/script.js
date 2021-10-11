@@ -7,7 +7,7 @@ if (window.location.href.includes('random.html')) {
 } else if (window.location.href.includes('search.html')) {
   Search.init()
 } else {
-  const slide = new Slide('.container', 2000, -350)
+  const slide = new Slide('.container', 3500, -350)
 
   if (window.innerWidth >= 800) {
     slide.init()
