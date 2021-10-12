@@ -2,12 +2,21 @@ body.home {
   display: grid;
   grid-template-columns: 350px 1fr;
   align-items: center;
+
+  @include responsive(tablet) {
+    grid-template-columns: 1fr;
+    height: 100vh;
+  }
 }
 
 #image {
   height: 100vh;
   overflow: hidden;
   border-right: 0.5rem solid $color5;
+
+  @include responsive(tablet) {
+    display: none;
+  }
 
   .container {
     width: 350px;
@@ -46,6 +55,37 @@ body.home {
     font-size: 2.8rem;
     max-width: 550px;
   }
+
+  .blob1,
+  .blob2 {
+    opacity: 0.1;
+  }
+  .blob1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .blob2 {
+    position: absolute;
+
+    bottom: 0;
+    left: -80px;
+    z-index: -1;
+  }
+
+  @include responsive(tablet) {
+    padding: 1.5rem;
+
+    .blob1,
+    .blob2 {
+      width: 50%;
+      opacity: 1;
+    }
+
+    .blob1 {
+      width: 30%;
+    }
+  }
 }
 
 #main-home .button {
@@ -59,24 +99,22 @@ body.home {
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
     background: $color1;
 
-    width: 250px;
-    height: 75px;
+    width: 200px;
+    height: 65px;
     border-radius: 1.5rem;
     overflow: hidden;
 
     p {
       text-transform: uppercase;
       position: absolute;
-      font-family: $font-title;
-      color: $color4;
-      font-size: 3.2rem;
+      @include font($font-title, 3rem, $color4);
       top: 20%;
       transition: top 300ms ease-in-out;
     }
 
     img {
       position: absolute;
-      width: 100px;
+      width: 90px;
       bottom: -100px;
       transition: bottom 300ms ease-in-out;
     }
@@ -88,46 +126,5 @@ body.home {
     &:hover img {
       bottom: 8%;
     }
-  }
-}
-
-#main-home .blob1,
-#main-home .blob2 {
-  opacity: 0.1;
-}
-
-#main-home .blob1 {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-#main-home .blob2 {
-  position: absolute;
-
-  bottom: 0;
-  left: -80px;
-  z-index: -1;
-}
-
-@media (max-width: 800px) {
-  body.home {
-    grid-template-columns: 1fr;
-    height: 100vh;
-  }
-  #image {
-    display: none;
-  }
-  #main-home {
-    padding: 1.5rem;
-  }
-  #main-home .blob1,
-  #main-home .blob2 {
-    width: 50%;
-    opacity: 1;
-  }
-
-  #main-home .blob1 {
-    width: 30%;
   }
 }

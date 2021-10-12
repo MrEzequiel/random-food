@@ -9,7 +9,7 @@ if (window.location.href.includes('random.html')) {
 } else {
   const slide = new Slide('.container', 3500, -350)
 
-  if (window.innerWidth >= 800) {
+  if (window.innerWidth >= 720) {
     slide.init()
   }
 }

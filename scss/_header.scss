@@ -11,101 +11,103 @@
   box-shadow: 0 3px 26px rgba(0, 0, 0, 0.08);
 
   transition: box-shadow 600ms, background 600ms;
-}
 
-#header:hover {
-  background: #fff;
-  box-shadow: 0px 0.6rem 4.4rem rgba(0, 0, 0, 0.09);
-}
+  .logo {
+    width: calc(min(300px, 100%));
 
-.random button {
-  position: relative;
+    img {
+      width: 100%;
+    }
+  }
 
-  display: flex;
-  justify-content: center;
+  @include responsive(desk) {
+    justify-content: center;
+    flex-direction: column;
+  }
 
-  cursor: pointer;
-  background: transparent;
-  font-family: $font-title;
-  font-size: 2.4rem;
-  color: $color2;
-}
+  @include responsive(mobile) {
+    padding: 2rem 4rem;
+  }
 
-.random button::after {
-  content: '';
-  position: absolute;
-  bottom: -0.3rem;
-  background: $color5;
-  width: 60%;
-  height: 0.1rem;
-
-  transition: width 300ms ease;
-}
-
-.random button:hover::after {
-  width: 95%;
+  &:hover {
+    background: #fff;
+    box-shadow: 0px 0.6rem 4.4rem rgba(0, 0, 0, 0.09);
+  }
 }
 
 .search-meal {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
 
-.search-meal input {
-  width: 250px;
-  padding: 0.5rem;
-  background: rgb(240, 240, 240);
-  border-radius: 0.5rem 0.5rem 0 0;
-  border-bottom: 0.2rem solid color5;
+  input {
+    width: 250px;
+    padding: 0.5rem;
+    background: rgb(240, 240, 240);
+    border-radius: 0.5rem 0.5rem 0 0;
+    border-bottom: 0.2rem solid color5;
 
-  font-size: 2rem;
-  font-family: $font-title;
+    font-size: 2rem;
+    font-family: $font-title;
 
-  transition: background 300ms ease-in-out, box-shadow 600ms ease-in-out;
-}
+    transition: background 300ms ease-in-out, box-shadow 600ms ease-in-out;
 
-.search-meal input:focus {
-  background: #fff;
-  box-shadow: 0 1px 20px -5px rgba(0, 0, 0, 0.3);
-  caret-color: $color1;
-}
+    &:focus {
+      background: #fff;
+      box-shadow: 0 1px 20px -5px rgba(0, 0, 0, 0.3);
+      caret-color: $color1;
+    }
+    &::placeholder {
+      color: $font-color;
+      opacity: 0.5;
+    }
+  }
 
-.search-meal input::placeholder {
-  color: $font-color;
-  opacity: 0.5;
-}
+  button {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    background: $color5;
+    color: $color1;
 
-.search-meal button {
-  display: flex;
-  align-items: center;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  background: $color5;
-  color: $color1;
+    transition: transform 350ms ease-in-out, box-shadow 350ms ease-in-out;
 
-  transition: transform 350ms ease-in-out, box-shadow 350ms ease-in-out;
-}
+    &:hover {
+      transform: translateY(-0.6rem);
+      box-shadow: 0px 8px 5px -2px rgba(0, 0, 0, 0.2);
+    }
 
-.search-meal button:hover {
-  transform: translateY(-0.6rem);
-  box-shadow: 0px 8px 5px -2px rgba(0, 0, 0, 0.3);
-}
-
-.search-meal button span {
-  font-size: 3rem;
-}
-
-@media (max-width: 920px) {
-  #header {
-    justify-content: center;
-    flex-direction: column;
+    span {
+      font-size: 3rem;
+    }
   }
 }
 
-@media (max-width: 650px) {
-  #header {
-    padding: 2rem 4rem;
+.random {
+  button {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+
+    cursor: pointer;
+    background: transparent;
+    @include font($font-title, 2.4rem, $color2);
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.3rem;
+      background: $color5;
+      width: 60%;
+      height: 0.1rem;
+
+      transition: width 300ms ease;
+    }
+    &:hover::after {
+      width: 95%;
+    }
   }
 }

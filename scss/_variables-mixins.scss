@@ -2,8 +2,43 @@ $font-title: 'Livvic', sans-serif;
 $font-body: 'Work Sans', sans-serif;
 
 $font-color: #1d1d29;
+$white: #f4f4f4;
 $color1: #6c1827;
 $color2: #9e373b;
 $color3: #ef5c54;
 $color4: #ffe3d0;
 $color5: #ffd312;
+
+@mixin font($family: $font-body, $size: 1.4rem, $color: $font-color) {
+  font-family: $family;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin font-type(
+  $style: normal,
+  $weight: 400,
+  $color: $font-color,
+  $size: 1.4rem
+) {
+  font-style: $style;
+  font-weight: $weight;
+  color: $color;
+  font-size: $size;
+}
+
+@mixin responsive($type) {
+  @if ($type == desk) {
+    @media (max-width: 920px) {
+      @content;
+    }
+  } @else if ($type == tablet) {
+    @media (max-width: 720px) {
+      @content;
+    }
+  } @else if ($type == mobile) {
+    @media (max-width: 600px) {
+      @content;
+    }
+  }
+}

@@ -72,7 +72,7 @@ main {
 
 body {
   font: 400 1.6rem $font-body;
-  background: #f4f4f4;
+  background: $white;
   color: $font-color;
 }
 
@@ -86,12 +86,12 @@ body {
 ::-webkit-scrollbar-thumb {
   background: $font-color;
   border-radius: 0.5rem;
-  border: 2px solid #f4f4f4;
+  border: 2px solid $white;
 }
 
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
-  background: #f4f4f4;
+  background: $white;
 }
 
 /* RESET EM ESTILOS PRE DEFINIDOS */
