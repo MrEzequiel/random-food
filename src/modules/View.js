@@ -2,6 +2,7 @@ const View = {
   body: document.querySelector('body'),
   render(meal) {
     const mainContainer = document.createElement('main')
+    mainContainer.classList.add('main-random')
 
     const sectionInfoMeal = document.createElement('section')
     sectionInfoMeal.setAttribute('id', 'info-meal')

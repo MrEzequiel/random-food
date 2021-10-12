@@ -26,16 +26,16 @@
 
   cursor: pointer;
   background: transparent;
-  font-family: var(--font-title);
+  font-family: $font-title;
   font-size: 2.4rem;
-  color: var(--color2);
+  color: $color2;
 }
 
 .random button::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -0.3rem;
-  background: var(--color5);
+  background: $color5;
   width: 60%;
   height: 0.1rem;
 
@@ -57,10 +57,10 @@
   padding: 0.5rem;
   background: rgb(240, 240, 240);
   border-radius: 0.5rem 0.5rem 0 0;
-  border-bottom: 0.2rem solid var(--color5);
+  border-bottom: 0.2rem solid color5;
 
   font-size: 2rem;
-  font-family: var(--font-title);
+  font-family: $font-title;
 
   transition: background 300ms ease-in-out, box-shadow 600ms ease-in-out;
 }
@@ -68,11 +68,11 @@
 .search-meal input:focus {
   background: #fff;
   box-shadow: 0 1px 20px -5px rgba(0, 0, 0, 0.3);
-  caret-color: var(--color1);
+  caret-color: $color1;
 }
 
 .search-meal input::placeholder {
-  color: var(--font-color);
+  color: $font-color;
   opacity: 0.5;
 }
 
@@ -82,8 +82,8 @@
   padding: 0.25rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  background: var(--color5);
-  color: var(--color1);
+  background: $color5;
+  color: $color1;
 
   transition: transform 350ms ease-in-out, box-shadow 350ms ease-in-out;
 }

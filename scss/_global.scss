@@ -9,27 +9,71 @@
   box-sizing: border-box;
 }
 
+button,
+input,
+textarea {
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+a,
+em,
+img,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+article,
+footer,
+header,
+nav,
+section,
+main {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 :root {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 
-  /* VARIÁVEIS E DEFINIÇÕES */
   font-size: 62.5%;
-  --font-title: 'Livvic', sans-serif;
-  --font-body: 'Work Sans', sans-serif;
-
-  --font-color: #1d1d29;
-  --color1: #6c1827;
-  --color2: #9e373b;
-  --color3: #ef5c54;
-  --color4: #ffe3d0;
-  --color5: #ffd312;
 }
 
 body {
-  font: 400 1.6rem var(--font-body);
+  font: 400 1.6rem $font-body;
   background: #f4f4f4;
-  color: var(--font-color);
+  color: $font-color;
 }
 
 /* ESTILO DE SCROLL */
@@ -40,7 +84,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--font-color);
+  background: $font-color;
   border-radius: 0.5rem;
   border: 2px solid #f4f4f4;
 }
@@ -53,7 +97,7 @@ body {
 /* RESET EM ESTILOS PRE DEFINIDOS */
 a {
   text-decoration: none;
-  color: var(--font-color);
+  color: $font-color;
 }
 
 img {
@@ -63,7 +107,7 @@ img {
 
 button,
 input {
-  color: var(--font-color);
+  color: $font-color;
   outline: none;
   border: none;
 }
@@ -77,6 +121,6 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-title);
+  font-family: $font-title;
   font-weight: bold;
 }
